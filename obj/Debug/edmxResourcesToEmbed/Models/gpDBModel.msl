@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="gbDataBaseModelStoreContainer" CdmEntityContainer="gbDataBaseEntities">
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="gbDataBaseModel.Answer">
+        <MappingFragment StoreEntitySet="Answers">
+          <ScalarProperty Name="answerID" ColumnName="answerID" />
+          <ScalarProperty Name="questionID" ColumnName="questionID" />
+          <ScalarProperty Name="questionResult" ColumnName="questionResult" />
+          <ScalarProperty Name="isModelAnswer" ColumnName="isModelAnswer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EssayAnswers">
+      <EntityTypeMapping TypeName="gbDataBaseModel.EssayAnswer">
+        <MappingFragment StoreEntitySet="EssayAnswers">
+          <ScalarProperty Name="answerID" ColumnName="answerID" />
+          <ScalarProperty Name="essayAnswerBody" ColumnName="essayAnswerBody" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exams">
+      <EntityTypeMapping TypeName="gbDataBaseModel.Exam">
+        <MappingFragment StoreEntitySet="Exams">
+          <ScalarProperty Name="examName" ColumnName="examName" />
+          <ScalarProperty Name="examID" ColumnName="examID" />
+          <ScalarProperty Name="professorID" ColumnName="professorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MCQAnswers">
+      <EntityTypeMapping TypeName="gbDataBaseModel.MCQAnswer">
+        <MappingFragment StoreEntitySet="MCQAnswers">
+          <ScalarProperty Name="answerID" ColumnName="answerID" />
+          <ScalarProperty Name="choosenMCQAnswer" ColumnName="choosenMCQAnswer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MCQQuestions">
+      <EntityTypeMapping TypeName="gbDataBaseModel.MCQQuestion">
+        <MappingFragment StoreEntitySet="MCQQuestion">
+          <ScalarProperty Name="questionID" ColumnName="questionID" />
+          <ScalarProperty Name="answerA" ColumnName="answerA" />
+          <ScalarProperty Name="answerB" ColumnName="answerB" />
+          <ScalarProperty Name="answerC" ColumnName="answerC" />
+          <ScalarProperty Name="answerD" ColumnName="answerD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="gbDataBaseModel.Question">
+        <MappingFragment StoreEntitySet="Questions">
+          <ScalarProperty Name="text" ColumnName="text" />
+          <ScalarProperty Name="examID" ColumnName="examID" />
+          <ScalarProperty Name="questionID" ColumnName="questionID" />
+          <ScalarProperty Name="questionBody" ColumnName="questionBody" />
+          <ScalarProperty Name="questionType" ColumnName="questionType" />
+          <ScalarProperty Name="chapter" ColumnName="chapter" />
+          <ScalarProperty Name="moral" ColumnName="moral" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysUsers">
+      <EntityTypeMapping TypeName="gbDataBaseModel.SysUser">
+        <MappingFragment StoreEntitySet="SysUser">
+          <ScalarProperty Name="sysUserID" ColumnName="sysUserID" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TFAnswers">
+      <EntityTypeMapping TypeName="gbDataBaseModel.TFAnswer">
+        <MappingFragment StoreEntitySet="TFAnswers">
+          <ScalarProperty Name="answerID" ColumnName="answerID" />
+          <ScalarProperty Name="trueOrFalse" ColumnName="trueOrFalse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentsAlloweds">
+      <EntityTypeMapping TypeName="gbDataBaseModel.StudentsAllowed">
+        <MappingFragment StoreEntitySet="StudentsAllowed">
+          <ScalarProperty Name="studentsAllowedID" ColumnName="studentsAllowedID" />
+          <ScalarProperty Name="examID" ColumnName="examID" />
+          <ScalarProperty Name="isTaken" ColumnName="isTaken" />
+          <ScalarProperty Name="result" ColumnName="result" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

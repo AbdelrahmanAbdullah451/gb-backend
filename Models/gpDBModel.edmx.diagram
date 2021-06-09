@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8cfec45ee9d94797bccae47c60fd473b" Name="Diagram1" ZoomLevel="106">
+        <EntityTypeShape EntityType="gbDataBaseModel.Answer" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbDataBaseModel.EssayAnswer" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbDataBaseModel.Exam" Width="1.5" PointX="10" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbDataBaseModel.MCQAnswer" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbDataBaseModel.MCQQuestion" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbDataBaseModel.Question" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbDataBaseModel.SysUser" Width="1.5" PointX="7.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbDataBaseModel.TFAnswer" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="gbDataBaseModel.StudentsAllowed" Width="1.5" PointX="12.25" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="gbDataBaseModel.FK__Answers__questio__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="gbDataBaseModel.FK__EssayAnsw__answe__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="gbDataBaseModel.FK__MCQAnswer__answe__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="gbDataBaseModel.FK__TFAnswers__answe__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="gbDataBaseModel.FK__Exams__professor__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="gbDataBaseModel.FK__StudentsA__examI__286302EC" ManuallyRouted="false" />
+        <AssociationConnector Association="gbDataBaseModel.FK__MCQQuesti__quest__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="gbDataBaseModel.FK__StudentsA__stude__276EDEB3" ManuallyRouted="false" />
+        <AssociationConnector Association="gbDataBaseModel.FK__Questions__examI__47DBAE45" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

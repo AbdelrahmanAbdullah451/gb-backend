@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="gbDataBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="answerID" />
+    </Key>
+    <Property Name="answerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="questionID" Type="Int32" Nullable="false" />
+    <Property Name="questionResult" Type="Int32" Nullable="false" />
+    <Property Name="isModelAnswer" Type="Boolean" />
+    <NavigationProperty Name="Question" Relationship="Self.FK__Answers__questio__300424B4" FromRole="Answers" ToRole="Questions" />
+    <NavigationProperty Name="EssayAnswer" Relationship="Self.FK__EssayAnsw__answe__35BCFE0A" FromRole="Answers" ToRole="EssayAnswers" />
+    <NavigationProperty Name="MCQAnswer" Relationship="Self.FK__MCQAnswer__answe__32E0915F" FromRole="Answers" ToRole="MCQAnswers" />
+    <NavigationProperty Name="TFAnswer" Relationship="Self.FK__TFAnswers__answe__38996AB5" FromRole="Answers" ToRole="TFAnswers" />
+  </EntityType>
+  <EntityType Name="EssayAnswer">
+    <Key>
+      <PropertyRef Name="answerID" />
+    </Key>
+    <Property Name="answerID" Type="Int32" Nullable="false" />
+    <Property Name="essayAnswerBody" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK__EssayAnsw__answe__35BCFE0A" FromRole="EssayAnswers" ToRole="Answers" />
+  </EntityType>
+  <EntityType Name="Exam">
+    <Key>
+      <PropertyRef Name="examID" />
+    </Key>
+    <Property Name="examID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="professorID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="SysUser" Relationship="Self.FK__Exams__professor__25869641" FromRole="Exams" ToRole="SysUser" />
+    <NavigationProperty Name="StudentsAlloweds" Relationship="Self.FK__StudentsA__examI__286302EC" FromRole="Exams" ToRole="StudentsAllowed" />
+    <NavigationProperty Name="Questions" Relationship="gbDataBaseModel.FK__Questions__examI__47DBAE45" FromRole="Exam" ToRole="Question" />
+    <Property Name="examName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MCQAnswer">
+    <Key>
+      <PropertyRef Name="answerID" />
+    </Key>
+    <Property Name="answerID" Type="Int32" Nullable="false" />
+    <Property Name="choosenMCQAnswer" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK__MCQAnswer__answe__32E0915F" FromRole="MCQAnswers" ToRole="Answers" />
+  </EntityType>
+  <EntityType Name="MCQQuestion">
+    <Key>
+      <PropertyRef Name="questionID" />
+    </Key>
+    <Property Name="questionID" Type="Int32" Nullable="false" />
+    <Property Name="answerA" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="answerB" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="answerC" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="answerD" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Question" Relationship="Self.FK__MCQQuesti__quest__2D27B809" FromRole="MCQQuestion" ToRole="Questions" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="questionID" />
+    </Key>
+    <Property Name="questionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="questionBody" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="questionType" Type="Int32" Nullable="false" />
+    <Property Name="chapter" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="moral" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Answers" Relationship="Self.FK__Answers__questio__300424B4" FromRole="Questions" ToRole="Answers" />
+    <NavigationProperty Name="MCQQuestion" Relationship="Self.FK__MCQQuesti__quest__2D27B809" FromRole="Questions" ToRole="MCQQuestion" />
+    <Property Name="examID" Type="Int32" Nullable="false" />
+    <Property Name="text" Type="Int32" />
+    <NavigationProperty Name="Exam" Relationship="gbDataBaseModel.FK__Questions__examI__47DBAE45" FromRole="Question" ToRole="Exam" />
+  </EntityType>
+  <EntityType Name="SysUser">
+    <Key>
+      <PropertyRef Name="sysUserID" />
+    </Key>
+    <Property Name="sysUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userType" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Exams" Relationship="Self.FK__Exams__professor__25869641" FromRole="SysUser" ToRole="Exams" />
+    <NavigationProperty Name="StudentsAlloweds" Relationship="Self.FK__StudentsA__stude__276EDEB3" FromRole="SysUser" ToRole="StudentsAllowed" />
+  </EntityType>
+  <EntityType Name="TFAnswer">
+    <Key>
+      <PropertyRef Name="answerID" />
+    </Key>
+    <Property Name="answerID" Type="Int32" Nullable="false" />
+    <Property Name="trueOrFalse" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Answer" Relationship="Self.FK__TFAnswers__answe__38996AB5" FromRole="TFAnswers" ToRole="Answers" />
+  </EntityType>
+  <EntityType Name="StudentsAllowed">
+    <Key>
+      <PropertyRef Name="studentsAllowedID" />
+      <PropertyRef Name="examID" />
+      <PropertyRef Name="isTaken" />
+    </Key>
+    <Property Name="studentsAllowedID" Type="Int32" Nullable="false" />
+    <Property Name="examID" Type="Int32" Nullable="false" />
+    <Property Name="isTaken" Type="Boolean" Nullable="false" />
+    <Property Name="result" Type="Int32" />
+    <NavigationProperty Name="Exam" Relationship="Self.FK__StudentsA__examI__286302EC" FromRole="StudentsAllowed" ToRole="Exams" />
+    <NavigationProperty Name="SysUser" Relationship="Self.FK__StudentsA__stude__276EDEB3" FromRole="StudentsAllowed" ToRole="SysUser" />
+  </EntityType>
+  <Association Name="FK__Answers__questio__300424B4">
+    <End Role="Questions" Type="Self.Question" Multiplicity="1" />
+    <End Role="Answers" Type="Self.Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="questionID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="questionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__EssayAnsw__answe__35BCFE0A">
+    <End Role="Answers" Type="Self.Answer" Multiplicity="1" />
+    <End Role="EssayAnswers" Type="Self.EssayAnswer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Answers">
+        <PropertyRef Name="answerID" />
+      </Principal>
+      <Dependent Role="EssayAnswers">
+        <PropertyRef Name="answerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MCQAnswer__answe__32E0915F">
+    <End Role="Answers" Type="Self.Answer" Multiplicity="1" />
+    <End Role="MCQAnswers" Type="Self.MCQAnswer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Answers">
+        <PropertyRef Name="answerID" />
+      </Principal>
+      <Dependent Role="MCQAnswers">
+        <PropertyRef Name="answerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TFAnswers__answe__38996AB5">
+    <End Role="Answers" Type="Self.Answer" Multiplicity="1" />
+    <End Role="TFAnswers" Type="Self.TFAnswer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Answers">
+        <PropertyRef Name="answerID" />
+      </Principal>
+      <Dependent Role="TFAnswers">
+        <PropertyRef Name="answerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Exams__professor__25869641">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="1" />
+    <End Role="Exams" Type="Self.Exam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="sysUserID" />
+      </Principal>
+      <Dependent Role="Exams">
+        <PropertyRef Name="professorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentsA__examI__286302EC">
+    <End Role="Exams" Type="Self.Exam" Multiplicity="1" />
+    <End Role="StudentsAllowed" Type="Self.StudentsAllowed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exams">
+        <PropertyRef Name="examID" />
+      </Principal>
+      <Dependent Role="StudentsAllowed">
+        <PropertyRef Name="examID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MCQQuesti__quest__2D27B809">
+    <End Role="Questions" Type="Self.Question" Multiplicity="1" />
+    <End Role="MCQQuestion" Type="Self.MCQQuestion" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Questions">
+        <PropertyRef Name="questionID" />
+      </Principal>
+      <Dependent Role="MCQQuestion">
+        <PropertyRef Name="questionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudentsA__stude__276EDEB3">
+    <End Role="SysUser" Type="Self.SysUser" Multiplicity="1" />
+    <End Role="StudentsAllowed" Type="Self.StudentsAllowed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SysUser">
+        <PropertyRef Name="sysUserID" />
+      </Principal>
+      <Dependent Role="StudentsAllowed">
+        <PropertyRef Name="studentsAllowedID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="gbDataBaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Answers" EntityType="Self.Answer" />
+    <EntitySet Name="EssayAnswers" EntityType="Self.EssayAnswer" />
+    <EntitySet Name="Exams" EntityType="Self.Exam" />
+    <EntitySet Name="MCQAnswers" EntityType="Self.MCQAnswer" />
+    <EntitySet Name="MCQQuestions" EntityType="Self.MCQQuestion" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="SysUsers" EntityType="Self.SysUser" />
+    <EntitySet Name="TFAnswers" EntityType="Self.TFAnswer" />
+    <EntitySet Name="StudentsAlloweds" EntityType="Self.StudentsAllowed" />
+    <AssociationSet Name="FK__Answers__questio__300424B4" Association="Self.FK__Answers__questio__300424B4">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__EssayAnsw__answe__35BCFE0A" Association="Self.FK__EssayAnsw__answe__35BCFE0A">
+      <End Role="Answers" EntitySet="Answers" />
+      <End Role="EssayAnswers" EntitySet="EssayAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MCQAnswer__answe__32E0915F" Association="Self.FK__MCQAnswer__answe__32E0915F">
+      <End Role="Answers" EntitySet="Answers" />
+      <End Role="MCQAnswers" EntitySet="MCQAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TFAnswers__answe__38996AB5" Association="Self.FK__TFAnswers__answe__38996AB5">
+      <End Role="Answers" EntitySet="Answers" />
+      <End Role="TFAnswers" EntitySet="TFAnswers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Exams__professor__25869641" Association="Self.FK__Exams__professor__25869641">
+      <End Role="SysUser" EntitySet="SysUsers" />
+      <End Role="Exams" EntitySet="Exams" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentsA__examI__286302EC" Association="Self.FK__StudentsA__examI__286302EC">
+      <End Role="Exams" EntitySet="Exams" />
+      <End Role="StudentsAllowed" EntitySet="StudentsAlloweds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MCQQuesti__quest__2D27B809" Association="Self.FK__MCQQuesti__quest__2D27B809">
+      <End Role="Questions" EntitySet="Questions" />
+      <End Role="MCQQuestion" EntitySet="MCQQuestions" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudentsA__stude__276EDEB3" Association="Self.FK__StudentsA__stude__276EDEB3">
+      <End Role="SysUser" EntitySet="SysUsers" />
+      <End Role="StudentsAllowed" EntitySet="StudentsAlloweds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Questions__examI__47DBAE45" Association="gbDataBaseModel.FK__Questions__examI__47DBAE45">
+      <End Role="Exam" EntitySet="Exams" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK__Questions__examI__47DBAE45">
+    <End Type="gbDataBaseModel.Exam" Role="Exam" Multiplicity="1" />
+    <End Type="gbDataBaseModel.Question" Role="Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exam">
+        <PropertyRef Name="examID" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="examID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

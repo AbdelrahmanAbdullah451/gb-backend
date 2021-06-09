@@ -1,0 +1,69 @@
+﻿@model IEnumerable<gb_raw.Models.Question>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.questionBody)
+        </th>
+    </tr>
+    @{
+        int i = 0;
+
+    }
+@foreach (var item in Model) {
+   
+    i++;
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.questionBody)
+    </td>
+
+    @if (item.questionType == 1)
+    {
+        <td>
+            @Html.DisplayFor(modelItem => item.MCQQuestion.answerA) :   @Html.RadioButton("msqanswer" + i, "A")
+            @Html.DisplayFor(modelItem => item.MCQQuestion.answerB) :   @Html.RadioButton("msqanswer" + i, "B")
+            @Html.DisplayFor(modelItem => item.MCQQuestion.answerC) :   @Html.RadioButton("msqanswer" + i, "C")
+            @Html.DisplayFor(modelItem => item.MCQQuestion.answerD) :   @Html.RadioButton("msqanswer" + i, "D")
+
+        </td>
+
+    }
+    else if (item.questionType == 2)
+    {
+        <td>
+            true  : @Html.RadioButton("tfanswer" + i, "true")
+            false :   @Html.RadioButton("tfanswer" + i, "false")
+        </td>
+    }
+    else
+    {
+
+
+        <td>
+            <input type="text" name="essay">
+        </td>
+    }
+
+
+    @* <td>
+            @Html.DisplayFor(modelItem => item.MCQQuestion.answerA)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.questionID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.questionID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.questionID })
+        </td>*@
+</tr>
+}
+
+</table>
